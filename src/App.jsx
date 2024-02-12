@@ -1,31 +1,24 @@
-import { Component } from "react";
-import FetchData from "./components/FetchData";
+import { useState } from "react";
+import Message from "./components/Message";
+import Privacy from "./components/Privacy";
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-    };
-  }
+export default function App() {
+  const [msg, setMsg] = useState(false);
 
-  componentDidUpdate(prevsProps, PrevState) {
-    if (prevsProps.count !== this.state.count) {
-      console.log("Component Update");
-    }
-  }
+  const msgUser = () => {
+    setMsg(true);
+  };
 
-  Increment() {
-    this.setState({ count: this.state.count + 1 });
-  }
+  const hideMsg = () => {
+    setMsg(false);
+  };
 
-  render() {
-    return (
-      <div>
-        <h1>{this.state.count}</h1>
-        <button onClick={() => this.Increment()}>Click Me</button>
-        <FetchData />
-      </div>
-    );
-  }
+  return (
+    <>
+      <h1>Events & Conditional Rendering in React</h1>
+      {msg ? <Message /> : <Privacy />}
+      <button onClick={msgUser}>Show</button>
+      <button onClick={hideMsg}>Hide</button>
+    </>
+  );
 }
