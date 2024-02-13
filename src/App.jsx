@@ -1,24 +1,37 @@
 import { useState } from "react";
-import Message from "./components/Message";
-import Privacy from "./components/Privacy";
+import AddTodo from "./components/AddTodo";
+import TodoItemsContext from "./store";
+import WelcomeMsg from "./components/WelcomeMsg";
+import TodoItems from "./components/TodoItems";
 
 export default function App() {
-  const [msg, setMsg] = useState(false);
+  const [todoItems, setTodoItems] = useState([]);
 
-  const msgUser = () => {
-    setMsg(true);
+  const handleNewItem = (itemName, itemDueDate) => {
+    const newTodoItems = [
+      ...todoItems,
+      { name: itemName, dueDate: itemDueDate },
+    ];
+    setTodoItems(newTodoItems);
   };
 
-  const hideMsg = () => {
-    setMsg(false);
+  const handleDeleteItem = (todoItemName) => {
+    const newTodoItems = todoItems.filter((item) => item.name !== todoItemName);
+    setTodoItems(newTodoItems);
   };
 
   return (
-    <>
-      <h1>Events & Conditional Rendering in React</h1>
-      {msg ? <Message /> : <Privacy />}
-      <button onClick={msgUser}>Show</button>
-      <button onClick={hideMsg}>Hide</button>
-    </>
+    <TodoItemsContext.Provider
+      value={{
+        todoItems,
+        handleDeleteItem,
+        handleNewItem,
+      }}
+    >
+      <h1>Todo App</h1>
+      <AddTodo />
+      <WelcomeMsg />
+      <TodoItems />
+    </TodoItemsContext.Provider>
   );
 }
