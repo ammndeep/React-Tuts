@@ -6,44 +6,46 @@
     text-align: center;
 }
 
-.add-todo {
-    background-color: rgb(198, 202, 207);
-    border-radius: 10px;
-    width: 700px;
-    height: 150px;
+.container {
     display: flex;
-    gap: 20px;
     justify-content: center;
     align-items: center;
 }
 
-.add-todo input {
-    border-radius: 5px;
+button {
+    color: red;
+    border: "none";
+    background-color: transparent;
     border: none;
-    padding: 10px;
+}
+
+button:hover {
+    color: rgb(231, 132, 132);
+}
+
+.btn {
+    background-color: blue;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
     font-size: 20px;
 }
 
-.add-todo button {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 21px;
-    background-color: rgb(135, 247, 204);
-}
-
-.list-item {
+.form {
+    width: 500px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 70px;
-    margin-top: 20px;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: bisque;
 }
 
-.list-item button {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 21px;
-    background-color: rgb(250, 141, 141);
+.form input {
+    width: 250px;
+    height: 30px;
+    background-color: transparent;
+    border: 2px solid gray;
+    border-radius: 6px;
 }
